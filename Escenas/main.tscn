@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bppswo8dnguj3"]
+
+[ext_resource type="Script" uid="uid://dul262u10dss8" path="res://Scripts/main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://df0a6bsa0dkko" path="res://Recursos/Gray GRASS.webp" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b14tqepdlknno" path="res://Escenas/personaje.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://creiih4626d05" path="res://Escenas/bandera.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ctors4lc7k3d7" path="res://Escenas/enemigo.tscn" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dsasvqarippcc" path="res://Escenas/menu.tscn" id="6_crgrh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
+
+[node name="Suelo" type="Sprite2D" parent="."]
+position = Vector2(576.5, 325.75)
+scale = Vector2(1.43875, 1.53783)
+texture = ExtResource("2_lquwl")
+
+[node name="Bandera" parent="." instance=ExtResource("4_lquwl")]
+position = Vector2(118, 353)
+
+[node name="Enemigo" parent="." instance=ExtResource("5_7mycd")]
+position = Vector2(783, 309)
+
+[node name="Personaje" parent="." instance=ExtResource("4_1bvp3")]
+position = Vector2(558, 216)
+
+[node name="menu" parent="." instance=ExtResource("6_crgrh")]
+
+[connection signal="gana" from="Bandera" to="." method="_on_bandera_gana"]
+[connection signal="pierde" from="Bandera" to="." method="_on_bandera_pierde"]
+[connection signal="jugar" from="menu" to="." method="_on_menu_jugar"]
+[connection signal="rejugar" from="menu" to="." method="_on_menu_rejugar"]
+[connection signal="salir" from="menu" to="." method="_on_menu_salir"]

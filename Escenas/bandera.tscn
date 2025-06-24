@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://creiih4626d05"]
+
+[ext_resource type="Texture2D" uid="uid://ci6r7rdfkcyut" path="res://Recursos/Flag.png" id="1_5vta1"]
+[ext_resource type="Script" uid="uid://cncv2lh77mq4x" path="res://Scripts/bandera.gd" id="2_phhtn"]
+
+[node name="Bandera" type="Sprite2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_5vta1")
+script = ExtResource("2_phhtn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+scale = Vector2(12, 12)
+build_mode = 1
+polygon = PackedVector2Array(-13.3333, 0, 0, 15, 14.1667, 0, 0, -16.6667)
+
+[connection signal="gana" from="." to="." method="_on_gana"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
